@@ -5,7 +5,7 @@ globals.forEach(function(g) {
   if (g in global) globalValues[g] = global[g];
 });
 
-require(process.env['LATER_COV'] ? "./later-cov" : "./later");
+require("./later");
 
 module.exports = later;
 
