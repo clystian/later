@@ -10,12 +10,12 @@
 *     http://github.com/bunkat/later
 */
 
-later.setInterval = function(fn, sched) {
+later.setInterval = function(fn, sched, timezone) {
   if (!fn) {
     return;
   }
 
-  var t = later.setTimeout(scheduleTimeout, sched),
+  var t = later.setTimeout(scheduleTimeout, sched, timezone),
       done = t.isDone();
 
   /**
@@ -25,7 +25,7 @@ later.setInterval = function(fn, sched) {
   function scheduleTimeout() {
     if(!done) {
       fn();
-      t = later.setTimeout(scheduleTimeout, sched);
+      t = later.setTimeout(scheduleTimeout, sched, timezone);
     }
   }
 
